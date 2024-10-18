@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guestbook-ui
+  annotations:
+    argocd.argoproj.io/ignore-healthcheck: "true"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -11,8 +13,6 @@ spec:
       app: guestbook-ui
   template:
     metadata:
-      annotations:
-        argocd.argoproj.io/ignore-healthcheck: "true"
       labels:
         app: guestbook-ui
     spec:
